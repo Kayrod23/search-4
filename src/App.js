@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from "./components/Home.jsx";
+import Error from "./components/Error.jsx";
+import New from "./components/New.jsx";
+import Index from "./components/Index.jsx";
+import Show from "./components/Show.jsx";
+import Edit from "./components/Edit.jsx";
+import Nav from "./components/Nav.jsx";
+import SignIn from "./components/auth/SignIn.jsx";
+import SignUp from "./components/auth/SignUp.jsx";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <BrowserRouter>
+    <Nav/>
+    <Routes>
+      <Route path="*" element={<Error/>}/>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/signin" element={<SignIn/>}/>
+      <Route path="/signup" element={<SignUp/>}/>
+      <Route path="/items" element={<Index/>}/>
+      <Route path="/items/new" element={<New/>}/>
+      <Route path="/items/:id" element={<Show/>}/>
+      <Route path="/items/:id/edit" element={<Edit/>}/>
+    </Routes>
+  </BrowserRouter>
   );
 }
 
