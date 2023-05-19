@@ -18,10 +18,10 @@ function Index() {
   return (
     <div>
         {items ? items.map((item) => 
-            <Link to={`/items/${item.id}`}>
+            <Link key={item.id} to={`/items/${item.id}`}>
                 <div>
                     <img src={item.image} alt={item.name}/>
-                    <h3>{item.name} ${item.cost}</h3>
+                    <h3 className="text-3xl font-bold underline">{item.name} ${item.cost}</h3>
                 </div>
             </Link>
         ) : null}
