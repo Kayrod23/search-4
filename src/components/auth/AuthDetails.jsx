@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged} from 'firebase/auth';
 import { auth } from "../../firebase";
+import { Link } from 'react-router-dom';
 
-function AuthDetails() {
+function AuthDetails({options}) {
     const [authUser, setAuthUser] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -18,23 +20,26 @@ function AuthDetails() {
         };
     }, []);
 
-    function userSignOut() {
-        signOut(auth)
-        .then(() => {
-            console.log(`sign out successful`);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-    };
-
   return (
-    <div>{authUser ?
+    <div className='' >{authUser ?
         <>
-            <p>{`Signed In as ${authUser.email}`}</p>
-            <button onClick={userSignOut}>Sign Out</button>  
+        <div className=''>
+        <button className='' onClick={() => setIsOpen(!isOpen)}>
+            <p className='' >{`Signed In as ${authUser.email}`}</p>
+        </button>
+        {isOpen && 
+        <div>
+            <ul>
+                {options.map((option, index) => 
+                <li key={index}><Link to={option.path}>{option.name}</Link></li>)}
+            </ul>
+        </div>}
+        </div>
         </> : 
-        <p>Sign Out</p>
+        <div>
+            <Link className="" to={"/signin"}>Login</Link>
+            <Link  to={"/signup"}>sign up</Link>
+        </div>
     }</div>
   )
 }

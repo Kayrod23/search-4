@@ -1,21 +1,32 @@
 import React, {useState} from "react";
-import { auth } from "../../firebase";
+import { auth, provider } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { signInWithRedirect } from "firebase/auth";
+
 
 function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     function signIn(event) {
         event.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+            navigate("/items")
             console.log(userCredential);
         })
         .catch((error) => {
             console.log(error);
+            alert("Wrong email or password!!!")
         });
     } 
+
+    function google() {
+        signInWithRedirect(auth, provider);
+        navigate("/items");
+    }
 
   return (
     <div>
@@ -41,6 +52,7 @@ function SignIn() {
             />
             <button type="submit">Log In</button>
         </form>
+        <button onClick={google}>Sign in With Google</button>
     </div>
   )
 }

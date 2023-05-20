@@ -8,23 +8,27 @@ import Edit from "./components/Edit.jsx";
 import Nav from "./components/Nav.jsx";
 import SignIn from "./components/auth/SignIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
+import Profile from "./components/auth/Profile.jsx"
 import './App.css';
 
 function App() {
   return (
-  <BrowserRouter>
-    <Nav/>
-    <Routes>
-      <Route path="*" element={<Error/>}/>
-      <Route path="/" element={<Home/>}/>
-      <Route path="/signin" element={<SignIn/>}/>
-      <Route path="/signup" element={<SignUp/>}/>
-      <Route path="/items" element={<Index/>}/>
-      <Route path="/items/new" element={<New/>}/>
-      <Route path="/items/:id" element={<Show/>}/>
-      <Route path="/items/:id/edit" element={<Edit/>}/>
-    </Routes>
-  </BrowserRouter>
+    <div className='bg-gray-100 h-screen'>
+    <BrowserRouter>
+      <Nav/>
+      <Routes>
+        <Route path="*" element={<Error/>}/>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/items" element={<Index/>}/>
+        <Route path="/items/new" element={<New/>}/>
+        <Route path="/items/:id" element={<Show/>}/>
+        <Route path="/items/:id/edit" element={<Edit/>}/>
+      </Routes>
+    </BrowserRouter>
+  </div>
   );
 }
 

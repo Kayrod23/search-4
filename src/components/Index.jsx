@@ -16,12 +16,15 @@ function Index() {
     }, []);
 
   return (
-    <div>
+    <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
         {items ? items.map((item) => 
-            <Link key={item.id} to={`/items/${item.id}`}>
-                <div>
-                    <img src={item.image} alt={item.name}/>
-                    <h3 className="text-3xl font-bold underline">{item.name} ${item.cost}</h3>
+            <Link className="bg-white p-6 text-center m-4" key={item.id} to={`/items/${item.id}`}>
+                <div className="grid justify-items-center h-80">
+                    <p className="text-xl font-bolde">{item.name} ${item.cost}</p>
+                    <img className="object-scale-down  w-64 h-56 " src={item.image} alt={item.name}/>
+                    <p className="text-sm font-bold">
+                        <button className="text-blue-600">See More</button>
+                    </p>
                 </div>
             </Link>
         ) : null}

@@ -1,15 +1,18 @@
 import React, {useState} from "react";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const naviagte = useNavigate();
+ 
     function signUp(event) {
         event.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+            naviagte("/items")
             console.log(userCredential);
         })
         .catch((error) => {

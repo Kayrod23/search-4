@@ -18,7 +18,7 @@ function Show() {
     }, [id]);
 
     function handleDelete () {
-        axios.delete(`${process.env.REACT_APP_API_URL}/items${id}`)
+        axios.delete(`${process.env.REACT_APP_API_URL}/items/${id}`)
         .then(() => {
             navigate("/items");
         })
@@ -37,7 +37,7 @@ function Show() {
         <p>{item.category}</p>
         <div>
             <button><Link to={"/items"}>Back to all Items</Link></button>
-            <button><Link to={`/items/${id}edit`}>Edit Item</Link></button>
+            <button><Link to={`/items/${id}/edit`}>Edit Item</Link></button>
             <button onClick={handleDelete}>Remove Item</button>
         </div>
     </div>
