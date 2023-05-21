@@ -23,22 +23,22 @@ function AuthDetails({options}) {
   return (
     <div className='' >{authUser ?
         <>
-        <div className=''>
+        <div className='font-bold m-5'>
         <button className='' onClick={() => setIsOpen(!isOpen)}>
-            <p className='' >{`Signed In as ${authUser.email}`}</p>
+            <p className='' >{`${authUser.email} `}</p>
         </button>
         {isOpen && 
         <div>
             <ul>
                 {options.map((option, index) => 
-                <li key={index}><Link to={option.path}>{option.name}</Link></li>)}
+                <li className='bg-gray-600 text-white focus:outline-none rounded focus:shadow-outline p-2' key={index}><Link className='bg-blue-500 rounded hover:bg-blue-700 m-1 p-1' to={option.path}>{option.name}</Link></li>)}
             </ul>
         </div>}
         </div>
         </> : 
-        <div>
-            <Link className="" to={"/signin"}>Login</Link>
-            <Link  to={"/signup"}>sign up</Link>
+        <div className='m-5'>
+            <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline m-2" to={"/signin"}>Login</Link>
+            <Link className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" to={"/signup"}>sign up</Link>
         </div>
     }</div>
   )
