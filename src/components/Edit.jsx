@@ -32,7 +32,7 @@ function Edit() {
 
     function handleSubmit (event) {
         event.preventDefault();
-        axios.post(`${process.env.REACT_APP_API_URL}/items/${id}`, editItem)
+        axios.put(`${process.env.REACT_APP_API_URL}/items/${id}`, editItem)
         .then(() => {
             navigate("/items");
         })
@@ -139,7 +139,7 @@ function Edit() {
                   value={editItem.category}
                   onChange={handleInputChange}
                 >
-                <option value="">--option--</option>
+                <option value="">--Option--</option>
                   <option value="games">games</option>
                   <option value="tech">tech</option>
                   <option value="tech">house</option>
@@ -177,7 +177,7 @@ function Edit() {
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
-            > Add new Item</button>
+            >Edit Item</button>
             <button  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               <Link to={`/items/${id}`}>Cancel </Link>
             </button>

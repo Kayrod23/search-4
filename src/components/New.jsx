@@ -131,7 +131,7 @@ function New() {
                   value={newItem.category}
                   onChange={handleInputChange}
                 >
-                <option value="">--Please choose an option--</option>
+                <option value="">--Option--</option>
                   <option value="games">games</option>
                   <option value="tech">tech</option>
                   <option value="tech">house</option>
