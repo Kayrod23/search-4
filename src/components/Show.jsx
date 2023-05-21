@@ -33,8 +33,8 @@ function Show() {
         <p>{item.name}</p>
         <p>${item.cost}</p>
         <p>{item.quantity}</p>
-        {/* <p>{item.description}</p> */}
         <p>{item.category}</p>
+        <p>{item.description}</p>
         <div>
             <button><Link to={"/items"}>Back to all Items</Link></button>
             <button><Link to={`/items/${id}/edit`}>Edit Item</Link></button>
