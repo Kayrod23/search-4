@@ -9,11 +9,13 @@ import Nav from "./components/Nav.jsx";
 import SignIn from "./components/auth/SignIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
 import Profile from "./components/auth/Profile.jsx"
+import img from "./markus-winkler-afW1hht0NSs-unsplash.jpg"
 import './App.css';
 
 function App() {
   return (
-    <div className='bg-gray-100 h-screen'>
+    <div className='bg-gray-100 h-screen bg-cover'
+    style={{backgroundImage: `url(${img}`}}>
     <BrowserRouter>
       <Nav/>
       <Routes>
