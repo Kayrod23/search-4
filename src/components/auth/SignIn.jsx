@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { auth, provider } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { signInWithRedirect } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -18,19 +18,22 @@ function SignIn() {
       })
       .catch((error) => {
         console.log(error);
-        alert("Wrong email or password!!!");
+        alert("Wrong Email or Password!!!!");
       });
   }
 
   function google() {
-    signInWithRedirect(auth, provider);
-    // navigate("/items");
+    signInWithPopup(auth, provider).catch((error) => {
+      alert(error);
+    });
+    navigate("/items");
   }
 
   return (
-    <div className="flex justify-center m-32">
+    <div className="flex justify-center mt-32">
       <div className="w-full max-w-sm">
-        <h1 className="text-xl text-center bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex">
+        <div className="text-xl text-center bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h1 className="text-xl text-center flex">
           Log In to your
           <p className="m-1"></p>
           <svg
@@ -49,6 +52,13 @@ function SignIn() {
           <p className="m-1"></p>
           Account
         </h1>
+        <button
+            className="bg-red-500  hover:bg-red-700 text-white font-bold py-2 px-4 my-4 rounded focus:outline-none focus:shadow-outline "
+            onClick={google}
+          >
+            Sign in With Google
+          </button>
+        </div>
         <form
           onSubmit={signIn}
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -93,12 +103,6 @@ function SignIn() {
               type="submit"
             >
               Sign In
-            </button>
-            <button
-              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              onClick={google}
-            >
-              Sign in With Google
             </button>
           </div>
         </form>

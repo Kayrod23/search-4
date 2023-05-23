@@ -27,8 +27,8 @@ function Nav() {
             console.log(options);
           }}
           options={[
-            { name: "View Profile", path: "/profile" },
             { name: "Add New Item", path: "/items/new" },
+            { name: "Sign Out", path: "/items" },
           ]}
         />
       </div>

@@ -1,24 +1,34 @@
 import { useEffect, useState } from 'react';
-import { onAuthStateChanged} from 'firebase/auth';
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-function AuthDetails({options}) {
-    const [authUser, setAuthUser] = useState(null);
-    const [isOpen, setIsOpen] = useState(false);
+function AuthDetails({ options }) {
+  const [authUser, setAuthUser] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-        const listen = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setAuthUser(user);
-            } else {
-                setAuthUser(null);
-            };
-        });
-        return () => {
-            listen();
-        };
-    }, []);
+  useEffect(() => {
+    const listen = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+      }
+    });
+    return () => {
+      listen();
+    };
+  }, []);
+
+  function userSignOut() {
+    signOut(auth)
+      .then(() => {
+        console.log(`sign out successful`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="">
@@ -29,21 +39,26 @@ function AuthDetails({options}) {
               <p className="">{`${authUser.email} `}</p>
             </button>
             {isOpen && (
-              <div className=''>
+              <div className="">
                 <ul>
-                  {options.map((option, index) => (
-                    <li
-                      className="bg-gray-600 text-white focus:outline-none rounded focus:shadow-outline p-2"
-                      key={index}
+                  <li className="bg-gray-600 text-white focus:outline-none rounded focus:shadow-outline p-2">
+                    <Link
+                      className="bg-blue-500 rounded hover:bg-blue-700 m-1 p-1"
+                      to={options[0].path}
                     >
+                      {options[0].name}
+                    </Link>
+                  </li>
+                  <li className="bg-gray-600 text-white focus:outline-none rounded focus:shadow-outline p-2">
+                    <button onClick={userSignOut}>
                       <Link
                         className="bg-blue-500 rounded hover:bg-blue-700 m-1 p-1"
-                        to={option.path}
+                        to={options[1].path}
                       >
-                        {option.name}
+                        {options[1].name}{" "}
                       </Link>
-                    </li>
-                  ))}
+                    </button>
+                  </li>
                 </ul>
               </div>
             )}
