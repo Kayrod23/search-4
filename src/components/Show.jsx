@@ -52,7 +52,7 @@ function Show() {
         <p>{item.description}</p>
         <p>Stock : {item.quantity}</p>
         <p>Category : {item.category}</p>
-       {authUser ? 
+       {authUser && authUser.email === item.onwer ? 
         <div className="grid grid-cols-3 gap-2 my-2">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"><Link to={"/items"}>Back to all Items</Link></button>
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"><Link to={`/items/${id}/edit`}>Edit Item</Link></button>
@@ -61,8 +61,7 @@ function Show() {
         <div className="grid grid-cols-2 gap-2">
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"><Link to={"/items"}>Back to all Items</Link></button>
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"><Link to={"/items"}>Add to Cart</Link></button>
-        </div>
-            }
+        </div>}
         </div>
     </div>
     </div>
