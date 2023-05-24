@@ -13,11 +13,6 @@ function New() {
     });
     const navigate = useNavigate();
 
-    // function handleInputChange(event) {
-    //     const value = event.target.type === "select-one" ? event.target.value : event.target.value;
-    //     setNewItem({ ...newItem, [event.target.id]: value });
-    // }
-
     function handleInputChange (event) {
         setNewItem({...newItem, [event.target.id]: event.target.value});
     };

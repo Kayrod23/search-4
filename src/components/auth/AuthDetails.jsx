@@ -36,7 +36,7 @@ function AuthDetails({ options }) {
         <>
           <div className="font-bold m-5">
             <button className="" onClick={() => setIsOpen(!isOpen)}>
-              <p className="">{`${authUser.email} `}</p>
+              <p className="">{`${authUser.email}`}</p>
             </button>
             {isOpen && (
               <div className="">

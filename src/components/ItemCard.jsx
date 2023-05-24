@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ItemCard = ({ item }) => {
   return (
     <Link
-      className="h-80 bg-gray-200 p-6 text-center m-4 max-w-lg rounded overflow-hidden shadow-lg grid justify-items-center content-center"
+      className="bg-gray-200 p-6 text-center m-4 max-w-lg rounded overflow-hidden shadow-lg grid justify-items-center content-center"
       key={item.id}
       to={`/items/${item.id}`}
     >

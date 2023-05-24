@@ -17,7 +17,6 @@ function Edit() {
     function handleInputChange (event) {
         const value = event.target.type === "select" ? event.target.option : event.target.value;
         setEditItem({...editItem, [event.target.id]: value});
-        // setNewItem({...newItem, [event.target.id]: event.target.value});
     };
 
     useEffect(() => {
