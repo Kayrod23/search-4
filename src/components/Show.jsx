@@ -22,7 +22,7 @@ function Show() {
             listen();
         };
     }, []);
-    
+
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}/items/${id}`)
         .then((res) => {
@@ -42,6 +42,7 @@ function Show() {
             console.log(error);
         });
     };
+    console.log(item.email)
 
   return (
     <div className="flex justify-center my-20">
@@ -52,6 +53,7 @@ function Show() {
         <p>{item.description}</p>
         <p>Stock : {item.quantity}</p>
         <p>Category : {item.category}</p>
+        <p>Email :{item.email} </p>
        {authUser && authUser.email === item.email ? 
         <div className="grid grid-cols-3 gap-2 my-2">
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"><Link to={"/items"}>Back to all Items</Link></button>

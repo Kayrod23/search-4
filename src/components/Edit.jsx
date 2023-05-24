@@ -10,6 +10,7 @@ function Edit() {
         quantity: "",
         category: "",
         description: "",
+        email: ""
     });
     const navigate = useNavigate();
     const {id} = useParams();
@@ -17,8 +18,8 @@ function Edit() {
     function handleInputChange (event) {
         const value = event.target.type === "select" ? event.target.option : event.target.value;
         setEditItem({...editItem, [event.target.id]: value});
-    };
-
+    };  
+  
     useEffect(() => {
       axios.get(`${process.env.REACT_APP_API_URL}/items/${id}`)
       .then((res) => {
@@ -39,7 +40,7 @@ function Edit() {
             console.log(error);
         });
     }
-
+console.log(editItem.email)
   return (
 <div className="flex justify-center m-32">
       <div className="w-full max-w-lg">

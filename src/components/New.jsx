@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 
 function New() {
+  const [email, setEmail] = useState(null);
     const [newItem, setNewItem] = useState({
       name: "",
       image: "",
@@ -10,6 +13,7 @@ function New() {
       quantity: "",
       category: "",
       description: "",
+      email: ""
     });
     const navigate = useNavigate();
 
@@ -17,23 +21,38 @@ function New() {
         setNewItem({...newItem, [event.target.id]: event.target.value});
     };
 
+    useEffect(() => {
+      const listen = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setEmail(user.email);
+          setNewItem({ ...newItem, email: user.email });
+        } else {
+          setEmail(null);
+        }
+      });
+      return () => {
+        listen();
+      };
+    }, []);
+
     function handleSubmit (event) {
         event.preventDefault();
         axios.post(`${process.env.REACT_APP_API_URL}/items`, newItem)
         .then(() => {
+          console.log(newItem.email)
             navigate("/items");
         })
         .catch((error) => {
             console.log(error);
         });
     }
-
   return (
     <div className="flex justify-center m-32">
       <div className="w-full max-w-lg">
         <h1 className="text-xl text-center bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex">
           Add a new Item
         </h1>
+        <p>{email ? email : null}</p>
         <form
           onSubmit={handleSubmit}
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -126,10 +145,11 @@ function New() {
                   value={newItem.category}
                   onChange={handleInputChange}
                 >
-                <option value="">--Option--</option>
+                <option value="">--Options--</option>
                   <option value="games">games</option>
                   <option value="tech">tech</option>
-                  <option value="tech">house</option>
+                  <option value="clothes">clothes</option>
+                  <option value="toys">toys</option>
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
