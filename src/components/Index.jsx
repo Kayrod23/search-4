@@ -31,7 +31,7 @@ function Index() {
       setFilteredItems(
         items.filter((item) => {
           if (select === "cost") {
-            return parseInt(item.cost) < parseInt(search);
+            return parseInt(item.cost) <= parseInt(search);
           } else {
             return item[select].toLowerCase().includes(search.toLowerCase());
           }
@@ -83,13 +83,13 @@ function Index() {
             </div>
           </div>
         </form>
-        <div className="flex justify-items-center mt-8 overflow-y-scroll">
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 px-12">
+        <div className="h-screen grid justify-items-center mt-8 overflow-y-scroll">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mx-12">
             {filteredItems
               ? filteredItems.map((item) => (
                   <ItemCard key={item.id} item={item} />
                 ))
-              : items.map((item) => <ItemCard key={item.id} item={item} />)}
+              : items.map((item) => (<ItemCard key={item.id} item={item} />))}
           </div>
         </div>
       </div>

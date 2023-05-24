@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 
-function SignIn() {
+function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -111,4 +111,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default LogIn;

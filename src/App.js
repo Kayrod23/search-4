@@ -6,7 +6,7 @@ import Index from "./components/Index.jsx";
 import Show from "./components/Show.jsx";
 import Edit from "./components/Edit.jsx";
 import Nav from "./components/Nav.jsx";
-import SignIn from "./components/auth/SignIn.jsx";
+import LogIn from "./components/auth/LogIn.jsx";
 import SignUp from "./components/auth/SignUp.jsx";
 import img from "./markus-winkler-afW1hht0NSs-unsplash.jpg";
 import { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div
-      className="bg-gray-100 h-screen w-screen bg-cover absolute top-0"
+      className="bg-gray-100 bg-black h-screen w-screen bg-cover absolute top-0"
       style={{ backgroundImage: `url(${img}` }}
     >
       <BrowserRouter>
@@ -39,7 +39,7 @@ function App() {
         <Routes>
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signin" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/items" element={<Index />} />
           <Route path="/items/:id" element={<Show />} />
