@@ -40,9 +40,9 @@ function Index() {
     }
 
     return (
-      <div>
+      <div className="">
         <form onSubmit={search4}>
-          <div className="flex justify-center my-8 ">
+          <div className="flex justify-center mt-24">
             <select
               onChange={handleSelectChange}
               id="select"
@@ -83,12 +83,14 @@ function Index() {
             </div>
           </div>
         </form>
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
-          {filteredItems
-            ? filteredItems.map((item) => (
-                <ItemCard key={item.id} item={item} />
-              ))
-            : items.map((item) => <ItemCard key={item.id} item={item} />)}
+        <div className="flex justify-items-center mt-8 overflow-y-scroll">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 px-12">
+            {filteredItems
+              ? filteredItems.map((item) => (
+                  <ItemCard key={item.id} item={item} />
+                ))
+              : items.map((item) => <ItemCard key={item.id} item={item} />)}
+          </div>
         </div>
       </div>
     );

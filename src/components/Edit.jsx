@@ -42,7 +42,7 @@ function Edit() {
     }
 
   return (
-<div className="flex justify-center m-20">
+<div className="flex justify-center m-32">
       <div className="w-full max-w-lg">
         <h1 className="text-xl text-center bg-gray-200 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex">
           Edit Existing Item

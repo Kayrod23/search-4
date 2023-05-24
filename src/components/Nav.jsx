@@ -4,7 +4,7 @@ import AuthDetails from './auth/AuthDetails';
 
 function Nav() {
   return (
-    <nav className="bg-gray-600 text-white grid grid-cols-2 h-16">
+    <nav className="bg-gray-600 text-white grid grid-cols-2 h-16 z-50 absolute top-0 left-0 w-full">
       <Link  className="text-5xl m-2 flex" to={"/items"}>
       <svg
     xmlns="http://www.w3.org/2000/svg"

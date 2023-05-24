@@ -41,7 +41,7 @@ function AuthDetails({ options }) {
             {isOpen && (
               <div className="">
                 <ul>
-                  <li className="bg-gray-600 text-white focus:outline-none rounded focus:shadow-outline p-2">
+                  <li className="bg-gray-600 text-white focus:outline-none focus:shadow-outline p-2">
                     <Link
                       className="bg-blue-500 rounded hover:bg-blue-700 m-1 p-1"
                       to={options[0].path}
@@ -49,7 +49,7 @@ function AuthDetails({ options }) {
                       {options[0].name}
                     </Link>
                   </li>
-                  <li className="bg-gray-600 text-white focus:outline-none rounded focus:shadow-outline p-2">
+                  <li className="bg-gray-600 text-white focus:outline-none rounded-b focus:shadow-outline p-2">
                     <button onClick={userSignOut}>
                       <Link
                         className="bg-blue-500 rounded hover:bg-blue-700 m-1 p-1"

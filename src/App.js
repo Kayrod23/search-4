@@ -14,7 +14,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className='bg-gray-100 h-screen bg-cover'
+    <div className='bg-gray-100 h-screen w-screen bg-cover absolute top-0'
     style={{backgroundImage: `url(${img}`}}>
     <BrowserRouter>
       <Nav/>
