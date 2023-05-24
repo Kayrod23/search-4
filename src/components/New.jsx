@@ -25,7 +25,6 @@ function New() {
       const listen = onAuthStateChanged(auth, (user) => {
         if (user) {
           setEmail(user.email);
-          setNewItem({ ...newItem, email: user.email });
         } else {
           setEmail(null);
         }
@@ -37,6 +36,7 @@ function New() {
 
     function handleSubmit (event) {
         event.preventDefault();
+        setNewItem({ ...newItem, email: email });
         axios.post(`${process.env.REACT_APP_API_URL}/items`, newItem)
         .then(() => {
           console.log(newItem.email)
